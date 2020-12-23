@@ -1,0 +1,66 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-controller="Home" asp-action="create" class="btn btn-primary mb-2">Create</a>
+<div class="container">
+    <table id="myTable" class="table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>#Id</th>
+                <th>Manufactory Name</th>
+                <th>Actions</th>
+                <th>#Id</th>
+                <th>Manufactory Name</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.BookId
+                    </td>
+                    <td>
+                        @item.NameBook
+                    </td>
+                    <td>
+                        @item.NameAuthor
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        @item.Amount
+                    </td>
+
+                    <td>
+                        <div>
+                            <a asp-controller="Home" asp-action="Update" class="btn btn-primary ">Update</a>
+                            <a asp-controller="Home" asp-action="Delete" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();//myTable is the id of the table to be displayed as dataTable
+            });
+    </script>
+}
+
+
+
+
